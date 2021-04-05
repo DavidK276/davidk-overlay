@@ -59,10 +59,6 @@ RDEPEND="
 
 S="${WORKDIR}"
 
-PATCHES=(
-	"${FILESDIR}/fix-url-opening-1.4.00.4855.patch"
-)
-
 pkg_pretend() {
 	chromium_suid_sandbox_check_kernel_config
 }
