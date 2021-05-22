@@ -62,7 +62,7 @@ src_install() {
 	insinto /usr/share
 
 	doins -r usr/share/applications
-	doins -r usr/share/icons
+	doins -r usr/share/pixmaps
 
 	dosym /usr/bin/${MY_PN}
 }
