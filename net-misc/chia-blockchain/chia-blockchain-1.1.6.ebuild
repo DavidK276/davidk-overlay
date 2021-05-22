@@ -18,11 +18,14 @@ IUSE=""
 RDEPEND="
 	app-accessibility/at-spi2-atk
 	app-accessibility/at-spi2-core
+	app-misc/trash-cli
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib
 	dev-libs/nspr
 	dev-libs/nss
+	gnome-base/gvfs
+	kde-plasma/kde-cli-tools
 	media-libs/alsa-lib
 	media-libs/mesa[X(+)]
 	net-print/cups
@@ -30,6 +33,8 @@ RDEPEND="
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3[X]
+	x11-libs/libdrm
+	x11-libs/libnotify
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libxkbcommon
@@ -44,6 +49,7 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-libs/pango
+	x11-misc/xdg-utils
 "
 
 RESTRICT="splitdebug"
