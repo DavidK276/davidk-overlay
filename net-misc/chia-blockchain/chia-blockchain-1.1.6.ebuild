@@ -58,9 +58,10 @@ src_prepare() {
 
 src_install() {
 	insinto /
+	doins -r /usr/bin
 	#dodoc changelog
+	doins -r /usr/lib
 	insinto /usr/share
-	insinto /usr/bin
 	doins -r usr/share/applications
 	doins -r usr/share/pixmaps
 
