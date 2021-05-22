@@ -58,7 +58,7 @@ src_prepare() {
 
 src_install() {
 	insinto /
-	dodoc changelog
+	#dodoc changelog
 	insinto /usr/share
 
 	doins -r usr/share/applications
