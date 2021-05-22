@@ -57,16 +57,8 @@ src_prepare() {
 }
 
 src_install() {
-	insinto /usr/bin
-	doins -r usr/bin
-	#dodoc changelog
-	insinto /usr/lib
-	doins -r usr/lib
-	insinto /usr/share
-	doins -r usr/share/applications
-	doins -r usr/share/pixmaps
-
-	#dosym /usr/bin/${MY_PN}
+	insinto /usr
+	doins -r usr/
 }
 
 pkg_postinst() {
