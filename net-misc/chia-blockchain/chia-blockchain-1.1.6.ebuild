@@ -60,7 +60,7 @@ src_install() {
 	insinto /
 	#dodoc changelog
 	insinto /usr/share
-
+	insinto /usr/bin
 	doins -r usr/share/applications
 	doins -r usr/share/pixmaps
 
