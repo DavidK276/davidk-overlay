@@ -64,7 +64,7 @@ src_install() {
 	doins -r usr/share/applications
 	doins -r usr/share/pixmaps
 
-	dosym /usr/bin/${MY_PN}
+	#dosym /usr/bin/${MY_PN}
 }
 
 pkg_postinst() {
