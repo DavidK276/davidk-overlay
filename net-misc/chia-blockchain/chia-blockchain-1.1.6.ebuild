@@ -57,8 +57,15 @@ src_prepare() {
 }
 
 src_install() {
-	insinto /
-	doins -r usr/
+	insinto /usr/bin
+	doins usr/bin/chia-blockchain
+	insinto /usr
+	doins -r usr/lib
+	fperms +x /usr/bin/chia-blockchain /usr/lib/chia-blockchain/chrome-sandbox
+	fperms u+s /usr/lib/chia-blockchain/chrome-sandbox
+	insinto /usr/share
+	doins -r usr/share/applications
+	doins -r usr/share/pixmaps
 }
 
 pkg_postinst() {
