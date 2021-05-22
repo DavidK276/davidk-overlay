@@ -63,6 +63,7 @@ src_install() {
 	doins -r usr/lib
 	fperms +x /usr/bin/chia-blockchain /usr/lib/chia-blockchain/chrome-sandbox
 	fperms u+s /usr/lib/chia-blockchain/chrome-sandbox
+	fperms -R +x /usr/lib/chia-blockchain/resources/app.asar.unpacked/daemon
 	insinto /usr/share
 	doins -r usr/share/applications
 	doins -r usr/share/pixmaps
@@ -70,4 +71,5 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
+	ewarn "This ebuild is experimental! Use at your own risk."
 }
