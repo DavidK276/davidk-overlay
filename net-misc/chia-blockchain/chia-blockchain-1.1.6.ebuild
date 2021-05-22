@@ -57,7 +57,7 @@ src_prepare() {
 }
 
 src_install() {
-	insinto /usr
+	insinto /
 	doins -r usr/
 }
 
