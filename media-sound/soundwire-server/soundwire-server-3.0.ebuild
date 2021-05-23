@@ -17,6 +17,8 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/glib
+	dev-qt/qtcore
+	dev-qt/qtwidgets
 	media-libs/alsa-lib
 	media-libs/mesa[X(+)]
 	sys-apps/dbus[X]
