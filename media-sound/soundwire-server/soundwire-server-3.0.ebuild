@@ -38,7 +38,6 @@ RDEPEND="
 	x11-libs/pango
 	media-sound/pulseaudio
 	media-sound/pavucontrol
-	media-sound/apulse
 	media-libs/portaudio
 "
 
