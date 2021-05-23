@@ -42,30 +42,6 @@ RDEPEND="
 	media-libs/portaudio
 "
 
-'''QA_PREBUILT="opt/Signal/signal-desktop
-	opt/Signal/chrome-sandbox
-	opt/Signal/crashpad_handler
-	opt/Signal/libEGL.so
-	opt/Signal/libffmpeg.so
-	opt/Signal/libGLESv2.so
-	opt/Signal/libnode.so
-	opt/Signal/libVkICD_mock_icd.so
-	opt/Signal/libvk_swiftshader.so
-	opt/Signal/libvulkan.so
-	opt/Signal/swiftshader/libEGL.so
-	opt/Signal/swiftshader/libGLESv2.so
-	opt/Signal/resources/app.asar.unpacked/node_modules/curve25519-n/build/Release/curve.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/libsignal-client/build/libsignal_client_linux.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/@journeyapps/sqlcipher/lib/binding/napi-v6-linux-x64/node_sqlite3.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/zkgroup/node_modules/ref-napi/build/Release/binding.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/ref-napi/build/Release/binding.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/ringrtc/build/linux/libringrtc.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/ffi-napi/build/Release/ffi_bindings.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/build/Release/sharp.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/8.10.5/lib/libvips-cpp.so.42
-	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/8.10.5/lib/libvips.so.42
-	opt/Signal/resources/app.asar.unpacked/node_modules/zkgroup/libzkgroup.so"'''
-
 RESTRICT="splitdebug"
 
 S="${WORKDIR}"
