@@ -54,6 +54,8 @@ src_install() {
 	doins SoundWireServer/SoundWireServer
 	insinto /usr/share/applications
 	doins SoundWireServer/SoundWire-Server.desktop
+	insinto /usr/share/icons
+	doins SoundWireServer/sw-icon.xpm
 	fperms +x /usr/bin/SoundWireServer
 }
 
