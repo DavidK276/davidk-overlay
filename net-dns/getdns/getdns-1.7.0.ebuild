@@ -71,8 +71,8 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	if use stubby; then
-		newinitd "${FILESDIR}"/stubby.initd-r2 stubby
-		newconfd "${FILESDIR}"/stubby.confd-r1 stubby
+		newinitd "${FILESDIR}"/stubby.initd stubby
+		newconfd "${FILESDIR}"/stubby.confd stubby
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/stubby.logrotate stubby
 		systemd_dounit "${S}"/stubby/systemd/stubby.service
