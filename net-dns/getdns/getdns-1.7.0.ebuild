@@ -48,7 +48,7 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 
-#PATCHES=( "${FILESDIR}/${PN}-1.4.2-stubby.service.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.4.2-stubby.service.patch" )
 
 src_configure() {
 	local mycmakeargs=(
