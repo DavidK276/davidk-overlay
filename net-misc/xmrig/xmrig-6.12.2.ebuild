@@ -6,13 +6,13 @@ EAPI=7
 inherit cmake optfeature
 
 DESCRIPTION="RandomX, CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner"
-HOMEPAGE="https://github.com/xmrig/xmrig"
+HOMEPAGE="https://xmrig.com https://github.com/xmrig/xmrig"
 SRC_URI="https://github.com/xmrig/xmrig/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="+ssl +opencl -cuda"
+KEYWORDS="~amd64"
+IUSE="opencl donate ssl"
 
 DEPEND="
 	dev-libs/libuv:=
@@ -20,20 +20,21 @@ DEPEND="
 	ssl? ( dev-libs/openssl:= )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.11.2-nonotls.patch"
+)
+
 src_prepare() {
+	use donate || eapply "${FILESDIR}/${PN}-6.3.3-nodonate.patch"
+
 	cmake_src_prepare
-	sed -i '/notls/d' cmake/OpenSSL.cmake || die
-	sed -i 's/1;/0;/g' src/donate.h || die
 }
 
 src_configure() {
 	local mycmakeargs=(
-		# TODO: Create expanded USE flag for all of the PoW algos.
 		-DWITH_TLS=$(usex ssl)
-		# TODO: opencl USE flag.
 		-DWITH_OPENCL=$(usex opencl)
-		# TODO: cuda USE flag.
-		-DWITH_CUDA=$(usex cuda)
+		-DWITH_CUDA=OFF
 	)
 
 	cmake_src_configure
@@ -41,11 +42,9 @@ src_configure() {
 
 src_install() {
 	dobin "${BUILD_DIR}/xmrig"
-	dodoc -r doc/*.md
-	einstalldocs
 }
 
 pkg_postinst() {
-	elog "Increase the vm.nr_hugepages sysctl value so that XMRig can allocate with huge pages."
-	optfeature "CPU specific performance tweaks" sys-apps/msr-tools
+	optfeature "cpu specific tweaks" sys-apps/msr-tools
 }
+
