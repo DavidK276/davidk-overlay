@@ -78,7 +78,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# Remove libdvdnav duplication and call it on the original instead.
 	# It may work this way; if not, we should try to mimic the duplication.
-	"${FILESDIR}/${PN}-9999-remove-dvdnav-dup.patch"
+	#"${FILESDIR}/${PN}-9999-remove-dvdnav-dup.patch"
 
 	# Remove faac dependency; TODO: figure out if we need to do this at all.
 	"${FILESDIR}/${PN}-9999-remove-faac-dependency.patch"
