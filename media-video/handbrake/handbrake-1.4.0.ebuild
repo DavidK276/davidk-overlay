@@ -11,8 +11,8 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	MY_P="HandBrake-${PV}"
-	#SRC_URI="https://github.com/HandBrake/HandBrake/releases/download/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
-	SRC_URI="https://github.com/HandBrake/HandBrake/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/HandBrake/HandBrake/releases/download/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
+	#SRC_URI="https://github.com/HandBrake/HandBrake/archive/refs/tags/${PV}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~x86"
 fi
