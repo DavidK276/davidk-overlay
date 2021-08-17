@@ -319,7 +319,7 @@ RESTRICT="
 S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
-	"${FILESDIR}"/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch
+	"${FILESDIR}"/n4.3.1-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch
 	"${FILESDIR}"/chromium-r1.patch
 )
 
