@@ -97,7 +97,7 @@ FFMPEG_FLAG_MAP=(
 FFMPEG_ENCODER_FLAG_MAP=(
 	amrenc:libvo-amrwbenc mp3:libmp3lame
 	kvazaar:libkvazaar libaom
-	openh264:libopenh264 rav1e:librav1e svt-av1:libsvtav1 snappy:libsnappy theora:libtheora twolame:libtwolame
+	openh264:libopenh264 rav1e:librav1e svt-vp9:libsvtvp9 svt-av1:libsvtav1 snappy:libsnappy theora:libtheora twolame:libtwolame
 	webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
 )
 
@@ -187,6 +187,7 @@ RDEPEND="
 		openh264? ( >=media-libs/openh264-1.4.0-r1:=[${MULTILIB_USEDEP}] )
 		rav1e? ( >=media-video/rav1e-0.4:=[capi] )
 		svt-av1? ( >=media-libs/svt-av1-0.8.6 )
+		svt-vp9? ( >=media-libs/svt-vp9-0.3.0 )
 		snappy? ( >=app-arch/snappy-1.1.2-r1:=[${MULTILIB_USEDEP}] )
 		theora? (
 			>=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}]
@@ -318,6 +319,7 @@ RESTRICT="
 S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
+	"${FILESDIR}"/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch
 	"${FILESDIR}"/chromium-r1.patch
 )
 
