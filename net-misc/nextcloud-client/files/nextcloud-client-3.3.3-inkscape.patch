@@ -1,6 +1,6 @@
-diff -Naur desktop-3.2.3.orig/src/gui/CMakeLists.txt desktop-3.2.3/src/gui/CMakeLists.txt
---- desktop-3.2.3.orig/src/gui/CMakeLists.txt	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/CMakeLists.txt	2021-07-06 19:20:34.225000546 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/CMakeLists.txt desktop-3.3.3/src/gui/CMakeLists.txt
+--- desktop-3.3.3.orig/src/gui/CMakeLists.txt	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/CMakeLists.txt	2021-07-06 19:20:34.225000546 +0200
 @@ -241,75 +241,6 @@
      set(APPLICATION_ICON_NAME ${APPLICATION_SHORTNAME})
  endif()

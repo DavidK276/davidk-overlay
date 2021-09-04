@@ -1,6 +1,6 @@
-diff -Naur desktop-3.2.3.orig/src/CMakeLists.txt desktop-3.2.3/src/CMakeLists.txt
---- desktop-3.2.3.orig/src/CMakeLists.txt	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/CMakeLists.txt	2021-07-07 20:26:40.620839467 +0200
+diff -Naur desktop-3.3.3.orig/src/CMakeLists.txt desktop-3.3.3/src/CMakeLists.txt
+--- desktop-3.3.3.orig/src/CMakeLists.txt	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/CMakeLists.txt	2021-07-07 20:26:40.620839467 +0200
 @@ -4,7 +4,13 @@
  
  set(synclib_NAME ${APPLICATION_EXECUTABLE}sync)
@@ -16,9 +16,9 @@ diff -Naur desktop-3.2.3.orig/src/CMakeLists.txt desktop-3.2.3/src/CMakeLists.tx
  get_target_property (QT_QMAKE_EXECUTABLE Qt5::qmake IMPORTED_LOCATION)
  message(STATUS "Using Qt ${Qt5Core_VERSION} (${QT_QMAKE_EXECUTABLE})")
  
-diff -Naur desktop-3.2.3.orig/src/gui/CMakeLists.txt desktop-3.2.3/src/gui/CMakeLists.txt
---- desktop-3.2.3.orig/src/gui/CMakeLists.txt	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/CMakeLists.txt	2021-07-07 20:26:40.620839467 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/CMakeLists.txt desktop-3.3.3/src/gui/CMakeLists.txt
+--- desktop-3.3.3.orig/src/gui/CMakeLists.txt	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/CMakeLists.txt	2021-07-07 20:26:40.620839467 +0200
 @@ -128,12 +128,17 @@
      wizard/owncloudwizardcommon.cpp
      wizard/owncloudwizard.cpp
@@ -55,9 +55,9 @@ diff -Naur desktop-3.2.3.orig/src/gui/CMakeLists.txt desktop-3.2.3/src/gui/CMake
  
  set_target_properties(nextcloudCore
    PROPERTIES
-diff -Naur desktop-3.2.3.orig/src/gui/creds/webflowcredentials.cpp desktop-3.2.3/src/gui/creds/webflowcredentials.cpp
---- desktop-3.2.3.orig/src/gui/creds/webflowcredentials.cpp	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/creds/webflowcredentials.cpp	2021-07-07 20:26:40.618839464 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/creds/webflowcredentials.cpp desktop-3.3.3/src/gui/creds/webflowcredentials.cpp
+--- desktop-3.3.3.orig/src/gui/creds/webflowcredentials.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/creds/webflowcredentials.cpp	2021-07-07 20:26:40.618839464 +0200
 @@ -16,7 +16,9 @@
  #include "account.h"
  #include "configfile.h"
@@ -82,9 +82,9 @@ diff -Naur desktop-3.2.3.orig/src/gui/creds/webflowcredentials.cpp desktop-3.2.3
  
          _askDialog = new WebFlowCredentialsDialog(_account, useFlow2);
  
-diff -Naur desktop-3.2.3.orig/src/gui/creds/webflowcredentialsdialog.cpp desktop-3.2.3/src/gui/creds/webflowcredentialsdialog.cpp
---- desktop-3.2.3.orig/src/gui/creds/webflowcredentialsdialog.cpp	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/creds/webflowcredentialsdialog.cpp	2021-07-07 20:26:40.618839464 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/creds/webflowcredentialsdialog.cpp desktop-3.3.3/src/gui/creds/webflowcredentialsdialog.cpp
+--- desktop-3.3.3.orig/src/gui/creds/webflowcredentialsdialog.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/creds/webflowcredentialsdialog.cpp	2021-07-07 20:26:40.618839464 +0200
 @@ -8,16 +8,20 @@
  #include "owncloudgui.h"
  #include "headerbanner.h"
@@ -154,9 +154,9 @@ diff -Naur desktop-3.2.3.orig/src/gui/creds/webflowcredentialsdialog.cpp desktop
  }
  
  void WebFlowCredentialsDialog::setInfo(const QString &msg) {
-diff -Naur desktop-3.2.3.orig/src/gui/creds/webflowcredentialsdialog.h desktop-3.2.3/src/gui/creds/webflowcredentialsdialog.h
---- desktop-3.2.3.orig/src/gui/creds/webflowcredentialsdialog.h	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/creds/webflowcredentialsdialog.h	2021-07-07 20:26:40.618839464 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/creds/webflowcredentialsdialog.h desktop-3.3.3/src/gui/creds/webflowcredentialsdialog.h
+--- desktop-3.3.3.orig/src/gui/creds/webflowcredentialsdialog.h	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/creds/webflowcredentialsdialog.h	2021-07-07 20:26:40.618839464 +0200
 @@ -13,7 +13,9 @@
  namespace OCC {
  
@@ -177,9 +177,9 @@ diff -Naur desktop-3.2.3.orig/src/gui/creds/webflowcredentialsdialog.h desktop-3
  
      QLabel *_errorLabel;
      QLabel *_infoLabel;
-diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudsetuppage.cpp desktop-3.2.3/src/gui/wizard/owncloudsetuppage.cpp
---- desktop-3.2.3.orig/src/gui/wizard/owncloudsetuppage.cpp	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/wizard/owncloudsetuppage.cpp	2021-07-07 20:26:40.619839465 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/wizard/owncloudsetuppage.cpp desktop-3.3.3/src/gui/wizard/owncloudsetuppage.cpp
+--- desktop-3.3.3.orig/src/gui/wizard/owncloudsetuppage.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/wizard/owncloudsetuppage.cpp	2021-07-07 20:26:40.619839465 +0200
 @@ -119,21 +119,6 @@
      _ui.leUrl->setPalette(leUrlPalette);
  }
@@ -213,9 +213,9 @@ diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudsetuppage.cpp desktop-3.2.3
      }
      return WizardCommon::Page_HttpCreds;
  }
-diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudsetuppage.h desktop-3.2.3/src/gui/wizard/owncloudsetuppage.h
---- desktop-3.2.3.orig/src/gui/wizard/owncloudsetuppage.h	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/wizard/owncloudsetuppage.h	2021-07-07 20:26:40.617839462 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/wizard/owncloudsetuppage.h desktop-3.3.3/src/gui/wizard/owncloudsetuppage.h
+--- desktop-3.3.3.orig/src/gui/wizard/owncloudsetuppage.h	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/wizard/owncloudsetuppage.h	2021-07-07 20:26:40.617839462 +0200
 @@ -67,10 +67,6 @@
  protected slots:
      void slotUrlChanged(const QString &);
@@ -227,9 +227,9 @@ diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudsetuppage.h desktop-3.2.3/s
  
      void setupCustomization();
  
-diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudwizardcommon.h desktop-3.2.3/src/gui/wizard/owncloudwizardcommon.h
---- desktop-3.2.3.orig/src/gui/wizard/owncloudwizardcommon.h	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/wizard/owncloudwizardcommon.h	2021-07-07 20:26:40.619839465 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/wizard/owncloudwizardcommon.h desktop-3.3.3/src/gui/wizard/owncloudwizardcommon.h
+--- desktop-3.3.3.orig/src/gui/wizard/owncloudwizardcommon.h	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/wizard/owncloudwizardcommon.h	2021-07-07 20:26:40.619839465 +0200
 @@ -46,7 +46,9 @@
          Page_HttpCreds,
          Page_OAuthCreds,
@@ -240,9 +240,9 @@ diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudwizardcommon.h desktop-3.2.
          Page_AdvancedSetup,
          Page_Result
      };
-diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudwizard.cpp desktop-3.2.3/src/gui/wizard/owncloudwizard.cpp
---- desktop-3.2.3.orig/src/gui/wizard/owncloudwizard.cpp	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/wizard/owncloudwizard.cpp	2021-07-07 20:26:40.619839465 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/wizard/owncloudwizard.cpp desktop-3.3.3/src/gui/wizard/owncloudwizard.cpp
+--- desktop-3.3.3.orig/src/gui/wizard/owncloudwizard.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/wizard/owncloudwizard.cpp	2021-07-07 20:26:40.619839465 +0200
 @@ -54,7 +54,11 @@
      , _flow2CredsPage(new Flow2AuthCredsPage)
      , _advancedSetupPage(new OwncloudAdvancedSetupPage(this))
@@ -311,9 +311,9 @@ diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudwizard.cpp desktop-3.2.3/sr
          setButtonLayout({ QWizard::Stretch, QWizard::BackButton });
      } else if (id == WizardCommon::Page_AdvancedSetup) {
          setButtonLayout({ QWizard::Stretch, QWizard::CustomButton1, QWizard::BackButton, QWizard::NextButton });
-diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudwizard.h desktop-3.2.3/src/gui/wizard/owncloudwizard.h
---- desktop-3.2.3.orig/src/gui/wizard/owncloudwizard.h	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/wizard/owncloudwizard.h	2021-07-07 20:26:40.619839465 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/wizard/owncloudwizard.h desktop-3.3.3/src/gui/wizard/owncloudwizard.h
+--- desktop-3.3.3.orig/src/gui/wizard/owncloudwizard.h	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/wizard/owncloudwizard.h	2021-07-07 20:26:40.619839465 +0200
 @@ -128,7 +128,7 @@
      OwncloudAdvancedSetupPage *_advancedSetupPage;
      OwncloudWizardResultPage *_resultPage;
@@ -323,9 +323,9 @@ diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudwizard.h desktop-3.2.3/src/
  
      QStringList _setupLog;
  
-diff -Naur desktop-3.2.3.orig/src/gui/wizard/welcomepage.cpp desktop-3.2.3/src/gui/wizard/welcomepage.cpp
---- desktop-3.2.3.orig/src/gui/wizard/welcomepage.cpp	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/gui/wizard/welcomepage.cpp	2021-07-07 20:26:40.620839467 +0200
+diff -Naur desktop-3.3.3.orig/src/gui/wizard/welcomepage.cpp desktop-3.3.3/src/gui/wizard/welcomepage.cpp
+--- desktop-3.3.3.orig/src/gui/wizard/welcomepage.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/gui/wizard/welcomepage.cpp	2021-07-07 20:26:40.620839467 +0200
 @@ -13,6 +13,7 @@
   */
  
@@ -353,9 +353,9 @@ diff -Naur desktop-3.2.3.orig/src/gui/wizard/welcomepage.cpp desktop-3.2.3/src/g
  }
  
  void WelcomePage::setupHostYourOwnServerLabel()
-diff -Naur desktop-3.2.3.orig/src/libsync/networkjobs.cpp desktop-3.2.3/src/libsync/networkjobs.cpp
---- desktop-3.2.3.orig/src/libsync/networkjobs.cpp	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/libsync/networkjobs.cpp	2021-07-07 20:26:40.619839465 +0200
+diff -Naur desktop-3.3.3.orig/src/libsync/networkjobs.cpp desktop-3.3.3/src/libsync/networkjobs.cpp
+--- desktop-3.3.3.orig/src/libsync/networkjobs.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/libsync/networkjobs.cpp	2021-07-07 20:26:40.619839465 +0200
 @@ -30,6 +30,7 @@
  #include <QCoreApplication>
  #include <QJsonDocument>
@@ -401,9 +401,9 @@ diff -Naur desktop-3.2.3.orig/src/libsync/networkjobs.cpp desktop-3.2.3/src/libs
  
      // If we determined that a simple get gave us an authentication required error
      // then the server enforces basic auth and we got no choice but to use this
-diff -Naur desktop-3.2.3.orig/src/libsync/networkjobs.h desktop-3.2.3/src/libsync/networkjobs.h
---- desktop-3.2.3.orig/src/libsync/networkjobs.h	2021-06-24 12:04:33.000000000 +0200
-+++ desktop-3.2.3/src/libsync/networkjobs.h	2021-07-07 20:26:40.619839465 +0200
+diff -Naur desktop-3.3.3.orig/src/libsync/networkjobs.h desktop-3.3.3/src/libsync/networkjobs.h
+--- desktop-3.3.3.orig/src/libsync/networkjobs.h	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.3.3/src/libsync/networkjobs.h	2021-07-07 20:26:40.619839465 +0200
 @@ -444,9 +444,11 @@
  public:
      enum AuthType {
