@@ -54,7 +54,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-inkscape.patch
-	#"${FILESDIR}"/${P}-webengine.patch
+	"${FILESDIR}"/${P}-webengine.patch
 	)
 
 S="${WORKDIR}/desktop-${PV/_/-}"
