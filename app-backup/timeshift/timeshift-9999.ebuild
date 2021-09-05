@@ -19,7 +19,7 @@ else
 fi
 
 IUSE=""
-PATCHES=( "${FILESDIR}/${P}-fix-xapp-2.0.patch" )
+#PATCHES=( "${FILESDIR}/${P}-fix-xapp-2.0.patch" )
 
 DEPEND="
 	dev-libs/json-glib
