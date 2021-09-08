@@ -116,7 +116,7 @@ src_install() {
 	fperms -R 755 "${dir}"/bin/lldb/helpers
 	if use custom-jdk; then
 		fperms -R 755 "${dir}"/jre/bin
-		fperms 755 ${dir}/jre/lib/server/jexec
+		fperms 755 ${dir}/jre/lib/jexec
 	fi
 
 	newicon "bin/studio.png" "${PN}.png"
