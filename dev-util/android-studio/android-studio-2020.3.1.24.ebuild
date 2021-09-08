@@ -113,9 +113,9 @@ src_install() {
 	fi
 
 	fperms 755 "${dir}"/bin/{fsnotifier{,64},printenv.py,restart.py,format.sh,inspect.sh,studio.sh}
-	fperms -R 755 "${dir}"/bin/lldb/{helpers}
+	fperms -R 755 "${dir}"/bin/lldb/helpers
 	if use custom-jdk; then
-		fperms -R 755 "${dir}"/jre/{bin}
+		fperms -R 755 "${dir}"/jre/bin
 		fperms 755 ${dir}/jre/lib/server/jexec
 	fi
 
