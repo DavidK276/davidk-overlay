@@ -113,10 +113,10 @@ src_install() {
 	fi
 
 	fperms 755 "${dir}"/bin/{fsnotifier{,64},printenv.py,restart.py,format.sh,inspect.sh,studio.sh}
-	fperms -R 755 "${dir}"/bin/lldb/{android,bin}
+	fperms -R 755 "${dir}"/bin/lldb/{helpers}
 	if use custom-jdk; then
-		fperms -R 755 "${dir}"/jre/{bin,jre/bin}
-		fperms 755 ${dir}/jre/jre/lib/jexec
+		fperms -R 755 "${dir}"/jre/{bin}
+		fperms 755 ${dir}/jre/lib/server/jexec
 	fi
 
 	newicon "bin/studio.png" "${PN}.png"
