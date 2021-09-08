@@ -98,10 +98,6 @@ src_prepare() {
 	echo "-Djdk.util.zip.ensureTrailingSlash=false" >> bin/studio.vmoptions || die
 }
 
-src_compile() {
-	patchelf --set-rpath '$ORIGIN' bin/lldb/lib/readline.so || die "Failed to fix insecure RPATH"
-}
-
 src_install() {
 	local dir="/opt/${PN}"
 
