@@ -38,7 +38,7 @@ fi
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
-IUSE="apicore binkern cpu cuda dbus debug +opencl +rocm verbose-debug"
+IUSE="apicore binkern cpu cuda dbus debug +opencl verbose-debug"
 
 QA_PREBUILT="${KERNELS_DIR}/ethash_*"
 
@@ -143,9 +143,6 @@ src_prepare() {
 			cmake/cable/CableBuildInfo.cmake
 	fi
 
-	# fix build with >nvidia-cuda-toolkit-10.2 (https://stackoverflow.com/q/64774548/5424487)
-	sed -i -e 's/compute_30/compute_50/' -e 's/sm_30/sm_50/' libethash-cuda/CMakeLists.txt || die
-
 	cmake_src_prepare
 }
 
@@ -159,8 +156,8 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
+		-DUSE_LOCAL_OPENCL=ON
 
-		-DUSE_SYS_OPENCL=$(usex rocm)
 		-DAPICORE=$(usex apicore)
 		-DBINKERN=$(usex binkern)
 		-DDEVBUILD=$(usex verbose-debug)
@@ -176,8 +173,8 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-##	newinitd "${FILESDIR}/${PN}-initd" "${PN}"
-##	newconfd "${FILESDIR}/${PN}-confd" "${PN}"
+	newinitd "${FILESDIR}/${PN}-initd" "${PN}"
+	newconfd "${FILESDIR}/${PN}-confd" "${PN}"
 
 	keepdir /var/{lib,log}/ethminer
 	fowners ethminer:ethminer /var/{lib,log}/ethminer
