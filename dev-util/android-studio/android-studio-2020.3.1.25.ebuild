@@ -2,50 +2,46 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop eutils java-pkg-2
+
+inherit desktop eutils
 
 RESTRICT="strip"
-QA_PREBUILT="
-	opt/${PN}/bin/fsnotifier*
-	opt/${PN}/bin/libdbm64.so
-	opt/${PN}/bin/lldb/*
-	opt/${PN}/custom-jdk/*
-	opt/${PN}/lib/pty4j-native/linux/*/libpty.so
-	opt/${PN}/plugins/android/lib/libwebp_jni*.so
-	opt/${PN}/plugins/android/resources/installer/*
-	opt/${PN}/plugins/android/resources/perfetto/*
-	opt/${PN}/plugins/android/resources/simpleperf/*
-	opt/${PN}/plugins/android/resources/transport/*
-"
 
-VER_CMP=( $(ver_rs 1- ' ') )
-if [[ ${#VER_CMP[@]} -eq 6 ]]; then
-	STUDIO_V=$(ver_cut 1-4)
-	BUILD_V=$(ver_cut 5-6)
-else
-	STUDIO_V=$(ver_cut 1-3)
-	BUILD_V=$(ver_cut 4-5)
-fi
+QA_PREBUILT="
+	opt/${PN}/bin/*
+	opt/${PN}/jre/bin/*
+	opt/${PN}/jre/lib/*
+	opt/${PN}/jre/lib/jli/*
+	opt/${PN}/jre/lib/server/*
+	opt/${PN}/lib/pty4j-native/linux/*/*
+	opt/${PN}/plugins/android-ndk/resources/lldb/android/*/*
+	opt/${PN}/plugins/android-ndk/resources/lldb/bin/*
+	opt/${PN}/plugins/android-ndk/resources/lldb/lib64/*
+	opt/${PN}/plugins/android-ndk/resources/lldb/lib/python3.8/lib-dynload/*
+	opt/${PN}/plugins/android/resources/installer/*/*
+	opt/${PN}/plugins/android/resources/layoutlib/data/linux/lib64/*
+	opt/${PN}/plugins/android/resources/perfetto/*/*
+	opt/${PN}/plugins/android/resources/simpleperf/*/*
+	opt/${PN}/plugins/android/resources/trace_processor_daemon/*
+	opt/${PN}/plugins/android/resources/transport/*/*
+	opt/${PN}/plugins/android/resources/transport/native/agent/*/*
+	opt/${PN}/plugins/android/resources/transport/*/*
+	opt/${PN}/plugins/c-plugin/bin/clang/linux/*
+	opt/${PN}/plugins/webp/lib/libwebp/linux/*
+"
 
 DESCRIPTION="Android development environment based on IntelliJ IDEA"
 HOMEPAGE="http://developer.android.com/sdk/installing/studio.html"
-SRC_URI="https://dl.google.com/dl/android/studio/ide-zips/${PV}/android-studio-${PV}-linux.tar.gz"
+SRC_URI="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${PV}/${P}-linux.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="custom-jdk selinux"
+IUSE="selinux"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
-	dev-java/commons-logging:0
-	dev-java/log4j:0"
-
 RDEPEND="${DEPEND}
-	>=virtual/jdk-1.7
 	selinux? ( sec-policy/selinux-android )
 	>=app-arch/bzip2-1.0.6-r4
-	dev-java/commons-logging:0
-	dev-java/log4j:0
 	>=dev-libs/expat-2.1.0-r3
 	>=dev-libs/libffi-3.0.13-r1
 	>=media-libs/fontconfig-2.10.92
@@ -65,60 +61,26 @@ RDEPEND="${DEPEND}
 	>=x11-libs/libXxf86vm-1.1.3
 	>=x11-libs/libdrm-2.4.46
 	>=x11-libs/libxcb-1.9.1
-	>=x11-libs/libxshmfence-1.1"
-BDEPEND="dev-util/patchelf"
+	>=x11-libs/libxshmfence-1.1
+	virtual/libcrypt:=
+	!!<dev-util/android-studio-2020.3.1.24
+"
+
 S=${WORKDIR}/${PN}
-PATCHES=( "${FILESDIR}/0001-use-java-home-before-bundled.patch" )
 
-src_prepare() {
-	eapply "${PATCHES[@]}"
-	eapply_user
-
-	# This is really a bundled jdk not a jre
-	# If custom-jdk is not set bundled jre is replaced with system vm/jdk
-	if use custom-jdk; then
-		mv -f "${S}/jre" "${S}/custom-jdk" || die "Could not move bundled jdk"
-	else
-		rm -rf "${S}/jre" || die "Could not remove bundled jdk"
-	fi
-	# Replace bundled jars with system
-	# has problems with newer jdom:0 not updated to jdom:2
-	cd "${S}/lib" || die
-	local JARS="commons-logging log4j"
-	local j
-	for j in ${JARS}; do
-		rm -v ${j/:*/}*.jar || die
-		java-pkg_jar-from ${j}
-	done
-
-	cd "${S}" || die
-
-	# bug 629404
-	echo "-Djdk.util.zip.ensureTrailingSlash=false" >> bin/studio64.vmoptions || die
-	echo "-Djdk.util.zip.ensureTrailingSlash=false" >> bin/studio.vmoptions || die
+src_compile() {
+	:;
 }
 
 src_install() {
 	local dir="/opt/${PN}"
-
 	insinto "${dir}"
 	doins -r *
-
-	# This is really a bundled jdk not a jre
-	# If custom-jdk is not set bundled jre is replaced with system vm/jdk
-	if use custom-jdk; then
-		dosym "custom-jdk" "${dir}/jre"
-	else
-		dosym "../../etc/java-config-2/current-system-vm" "${dir}/jre"
-	fi
-
 	fperms 755 "${dir}"/bin/{fsnotifier{,64},printenv.py,restart.py,format.sh,inspect.sh,studio.sh}
-	fperms -R 755 "${dir}"/bin/lldb/helpers
-	if use custom-jdk; then
-		fperms -R 755 "${dir}"/jre/bin
-		fperms 755 ${dir}/jre/lib/jexec
-	fi
-
+	fperms -R 755 "${dir}"/bin/lldb
+	fperms -R 755 "${dir}"/plugins/{android-ndk/resources/lldb,c-plugin/bin}
+	fperms -R 755 "${dir}"/jre/bin
+	fperms 755 ${dir}/jre/lib/jexec
 	newicon "bin/studio.png" "${PN}.png"
 	make_wrapper ${PN} ${dir}/bin/studio.sh
 	make_desktop_entry ${PN} "Android Studio" ${PN} "Development;IDE" "StartupWMClass=jetbrains-studio"
