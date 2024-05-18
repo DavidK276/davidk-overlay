@@ -1,10 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{9..12} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..11} )
 GENTOO_DEPEND_ON_PERL="no"
 
 inherit autotools distutils-r1 perl-functions
@@ -14,32 +16,39 @@ MY_PV="$(ver_cut 1-2)"
 DESCRIPTION="Library to support AppArmor userspace utilities"
 HOMEPAGE="https://gitlab.com/apparmor/apparmor/wikis/home"
 SRC_URI="https://launchpad.net/apparmor/${MY_PV}/${PV}/+download/apparmor-${PV}.tar.gz"
+S=${WORKDIR}/apparmor-${PV}/libraries/${PN}
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="doc +perl +python static-libs"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+# depends on the package already being installed
+RESTRICT="test"
 
-RDEPEND="perl? ( dev-lang/perl:= )
-	python? ( ${PYTHON_DEPS} )"
+RDEPEND="
+	perl? ( dev-lang/perl:= )
+	python? (
+		${PYTHON_DEPS}
+	)
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	sys-devel/bison
 	sys-devel/flex
 	doc? ( dev-lang/perl )
 	perl? ( dev-lang/swig )
 	python? (
+		${PYTHON_DEPS}
+		${DISTUTILS_DEPS}
 		dev-lang/swig
-		dev-python/setuptools[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
-S=${WORKDIR}/apparmor-${PV}/libraries/${PN}
-
-# depends on the package already being installed
-RESTRICT="test"
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.4-clang-flto-partition.patch
+)
 
 src_prepare() {
 	default
