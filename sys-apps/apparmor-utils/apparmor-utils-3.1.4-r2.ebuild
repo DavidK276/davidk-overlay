@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-inherit perl-module python-r1 toolchain-funcs
+PYTHON_COMPAT=( python3_{10..12} )
+inherit python-r1 toolchain-funcs
 
 MY_PV="$(ver_cut 1-2)"
 
@@ -14,28 +14,22 @@ SRC_URI="https://launchpad.net/apparmor/${MY_PV}/${PV}/+download/apparmor-${PV}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test"
 
 COMMON_DEPEND="
-	dev-lang/perl
 	~sys-libs/libapparmor-${PV}
 	${PYTHON_DEPS}"
 DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 "
 RDEPEND="${COMMON_DEPEND}
-	~sys-libs/libapparmor-${PV}[perl,python,${PYTHON_USEDEP}]
+	~sys-libs/libapparmor-${PV}[python,${PYTHON_USEDEP}]
 	~sys-apps/apparmor-${PV}
-	dev-perl/Locale-gettext
-	dev-perl/RPC-XML
-	dev-perl/TermReadKey
 	dev-python/notify2[${PYTHON_USEDEP}]
-	dev-python/psutil[${PYTHON_USEDEP}]
-	virtual/perl-Data-Dumper
-	virtual/perl-Getopt-Long"
+	dev-python/psutil[${PYTHON_USEDEP}]"
 
 S=${WORKDIR}/apparmor-${PV}
 
@@ -66,9 +60,7 @@ src_compile() {
 
 src_install() {
 	pushd utils > /dev/null || die
-	perl_set_version
-	emake DESTDIR="${D}" PERLDIR="${D}/${VENDOR_LIB}/Immunix" \
-		VIM_INSTALL_PATH="${D}/usr/share/vim/vimfiles/syntax" install
+	emake DESTDIR="${D}" VIM_INSTALL_PATH="${D}/usr/share/vim/vimfiles/syntax" install
 
 	install_python() {
 		local -x PYTHONDONTWRITEBYTECODE=
