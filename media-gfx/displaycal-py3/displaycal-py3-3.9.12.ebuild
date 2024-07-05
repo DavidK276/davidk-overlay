@@ -24,7 +24,7 @@ IUSE=""
 
 RESTRICT="test"
 
-PATCHES="${FILESDIR}/${P}-python-3.11.patch"
+PATCHES=""
 
 DEPEND="
 	dev-python/build[${PYTHON_USEDEP}]
